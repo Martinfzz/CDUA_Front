@@ -1,4 +1,4 @@
-import config from "config/constants";
+import config from "./constants";
 
 export const { BASE_URL } = config.url;
 

@@ -1,6 +1,6 @@
 import axios from "axios";
-import { BASE_URL, AUTH_TOKEN, USER_ID } from "config";
-import store from "store/store";
+import { BASE_URL, AUTH_TOKEN, USER_ID } from "../config";
+import store from "../store/store";
 import Cookies from "js-cookie";
 
 const API = axios.create({ baseURL: BASE_URL });

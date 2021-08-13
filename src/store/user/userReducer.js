@@ -1,4 +1,4 @@
-import { AUTH_TOKEN, USER_ID } from "config";
+import { AUTH_TOKEN, USER_ID } from "../../config";
 import Cookies from "js-cookie";
 import {
   REGISTRATION_REQUEST,

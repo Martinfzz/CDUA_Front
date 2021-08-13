@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
-import { AUTH_TOKEN, USER_ID } from "config";
-import store from "store/store";
+import { AUTH_TOKEN, USER_ID } from "../../config";
+import store from "../../store/store";
 import {
   registrationRequest,
   registrationFailed,
@@ -17,7 +17,7 @@ import {
   updateUserSuccess,
   updateUserFailed,
   updateUserRequest,
-} from "store";
+} from "../../store";
 import API from "../api";
 
 export default class UserManager {

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { StyleSheet, SafeAreaView, TextInput, Button } from "react-native";
+import { UserManager } from "../../services";
+
+
 const Registration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleOnPress = () => {
-    console.log(email);
-    console.log(password);
+  const handleOnPress = (e) => {
+    e.preventDefault();
+    UserManager.registerUser(email, password);
   };
 
   return (
