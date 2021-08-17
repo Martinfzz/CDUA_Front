@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>La page home ldfighj</Text>
+      <Text>La page home</Text>
       <Button
         onPress={() => navigation.navigate('Registration')}
         title="S'inscrire"

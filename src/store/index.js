@@ -15,4 +15,4 @@ export {
   updateUserFailed,
   updateUserRequest,
   resetErrors,
-} from "store/user/userAction";
+} from "./user/userAction";
