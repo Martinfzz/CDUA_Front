@@ -27,12 +27,10 @@ export default class UserManager {
       const response = await API.post("/registration", { user: { email, password } });
       store.dispatch(
         registrationSuccess({
-          id: response.data.id,
-          firstName: response.data.first_name,
-        }, response.headers.authorization),
+          id: response.data.user._id.$oid,
+          firstName: response.data.user.first_name,
+        }),
       );
-      Cookies.set(AUTH_TOKEN, response.headers.authorization, { expires: 7, secure: true, sameSite: "strict" });
-      Cookies.set(USER_ID, response.data.id, { expires: 7, secure: true, sameSite: "strict" });
     } catch (error) {
       store.dispatch(registrationFailed(error.message));
     }
@@ -55,13 +53,10 @@ export default class UserManager {
     try {
       const response = await API.post("session", { session: { email, password } });
       store.dispatch(
-        loginSuccess({
-          id: response.data.id,
-          firstName: response.data.first_name,
-        }, response.headers.authorization),
+        loginSuccess(response.data.session.jwt),
       );
       Cookies.set(AUTH_TOKEN, response.headers.authorization, { expires: 7, secure: true, sameSite: "strict" });
-      Cookies.set(USER_ID, response.data.id, { expires: 7, secure: true, sameSite: "strict" });
+      // Cookies.set(USER_ID, response.data.id, { expires: 7, secure: true, sameSite: "strict" });
     } catch (error) {
       store.dispatch(loginFailed(error.message));
     }

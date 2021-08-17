@@ -21,7 +21,8 @@ import {
 
 const INITIAL_STATE = {
   loading: false,
-  isLogged: !!Cookies.get(AUTH_TOKEN),
+  isLogged: false,
+  isRegistred: false,
   jwtToken: Cookies.get(AUTH_TOKEN),
   isUpdateSucceed: false,
   userProfile: {
@@ -43,6 +44,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loading: true,
+        isRegistered: false,
         isUpdateSucceed: false,
         loginError: "",
         logoutError: "",
@@ -53,7 +55,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loading: false,
-        isLogged: false,
+        isRegistred: false,
         jwtToken: "",
         registrationError: action.error,
       };
@@ -66,13 +68,19 @@ const userReducer = (state = INITIAL_STATE, action) => {
         loginError: action.error,
       };
     case REGISTRATION_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isRegistred: true,
+        jwtToken: "1",
+        userProfile: action.userProfile,
+      };
     case LOGIN_SUCCESS:
       return {
         ...state,
         loading: false,
         isLogged: true,
         jwtToken: action.jtwToken,
-        userProfile: action.userProfile,
       };
     case UPDATE_USER_SUCCESS:
       return {
