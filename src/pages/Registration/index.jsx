@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 import { View, StyleSheet, SafeAreaView, TextInput, Button, TouchableWithoutFeedback, Keyboard } from "react-native";
-import { useNavigation } from '@react-navigation/native';
 import { UserManager } from "../../services";
 import { resetErrors } from "../../store";
 import store from "../../store/store";
 
 
-const Registration = () => {
+const Registration = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const isLoginSuccess = useSelector((loginstore) => loginstore.isLogged);
   const isRegistredSuccess = useSelector((signinstore) => signinstore.isRegistred);
   const isLoginFailed = useSelector((loginstore) => !!loginstore.loginError);
-  const navigation = useNavigation();
 
   const handleOnPress = (e) => {
     e.preventDefault();
@@ -29,7 +27,7 @@ const Registration = () => {
 
   useEffect(() => {
     if (isLoginSuccess) {
-      navigation.navigate('Home')
+      navigation.navigate('Accueil')
     } else if (isLoginFailed) {
       store.dispatch(resetErrors());
     }
