@@ -4,7 +4,7 @@ import { View, StyleSheet, SafeAreaView, TextInput, Button, TouchableWithoutFeed
 import { UserManager } from "../../services";
 import { resetErrors } from "../../store";
 import store from "../../store/store";
-
+import { CommonActions } from '@react-navigation/native';
 
 const Registration = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -27,7 +27,15 @@ const Registration = ({ navigation }) => {
 
   useEffect(() => {
     if (isLoginSuccess) {
-      navigation.navigate('Accueil')
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 1,
+          routes: [
+            { name: 'Profil' },
+          ],
+        })
+      )
+
     } else if (isLoginFailed) {
       store.dispatch(resetErrors());
     }
