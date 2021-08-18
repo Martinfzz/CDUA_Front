@@ -1,20 +1,20 @@
 import React from 'react';
-import { StyleSheet } from "react-native";
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Registration from "../Registration"
-import Session from "../Session"
+import { StyleSheet, View, Button } from "react-native";
 
-const Stack = createNativeStackNavigator();
-
-const Profile = () => {
-
+const Profile = ({ navigation }) => {
   return (
-    <NavigationContainer>
-    <Stack.Navigator initialRouteName="Profile">
-      <Stack.Screen name="Registration" component={Registration} />
-      <Stack.Screen name="Session" component={Session} />
-    </Stack.Navigator>
-  </NavigationContainer>
+  <View>
+    <Button
+      onPress={() => navigation.navigate('Inscription')}
+      title="S'inscrire"
+      color="#841584"
+    />
+    <Button
+      onPress={() => navigation.navigate('Connexion')}
+      title="Se connecter"
+      color="red"
+    />
+  </View>
 );
 };
 
