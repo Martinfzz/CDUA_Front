@@ -21,8 +21,8 @@ export default function App() {
         <Drawer.Screen name="Accueil" component={Home} />
         <Drawer.Screen name="Profil" >
         {() => (
-        <Stack.Navigator initialRouteName="Profil" screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Profil" component={Profile} />
+        <Stack.Navigator initialRouteName="Profile" screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="Inscription" component={Registration} />
           <Stack.Screen name="Connexion" component={Session} />
         </Stack.Navigator>

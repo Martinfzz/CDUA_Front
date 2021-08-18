@@ -103,7 +103,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         loading: false,
         isLogged: false,
         jwtToken: "",
-        userProfile: {},
+        userProfile: "",
       };
     case LOGOUT_FAILED:
       return {
