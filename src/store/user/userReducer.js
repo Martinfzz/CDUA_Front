@@ -72,14 +72,15 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         isRegistred: true,
-        jwtToken: "1",
-        userProfile: action.userProfile,
+        jwtToken: "",
+        userProfile: "",
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
         loading: false,
         isLogged: true,
+        userProfile: action.userProfile,
         jwtToken: action.jtwToken,
       };
     case UPDATE_USER_SUCCESS:
