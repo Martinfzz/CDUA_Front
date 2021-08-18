@@ -1,31 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
-import { View, StyleSheet, SafeAreaView, TextInput, Button, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { View, StyleSheet, TextInput, Button, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { UserManager } from "../../services";
 import { resetErrors } from "../../store";
 import store from "../../store/store";
 
 
-const Registration = () => {
+const Session = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const isLoginSuccess = useSelector((loginstore) => loginstore.isLogged);
-  const isRegistredSuccess = useSelector((signinstore) => signinstore.isRegistred);
   const isLoginFailed = useSelector((loginstore) => !!loginstore.loginError);
   const navigation = useNavigation();
 
   const handleOnPress = (e) => {
     e.preventDefault();
-    UserManager.registerUser(email, password);
+    UserManager.loginUser(email, password);
   };
-
-  useEffect(() => {
-    if (isRegistredSuccess) {
-      UserManager.loginUser(email, password);
-    }
-  }, [isRegistredSuccess]);
 
   useEffect(() => {
     if (isLoginSuccess) {
@@ -52,16 +44,9 @@ const Registration = () => {
             secureTextEntry={true}
             placeholder="Mot de passe"
           />
-          <TextInput
-            style={styles.input}
-            onChangeText={setPasswordConfirmation}
-            value={passwordConfirmation}
-            secureTextEntry={true}
-            placeholder="Confirmer le mot de passe"
-          />
           <Button
             onPress={handleOnPress}
-            title="S'inscrire"
+            title="Se connecter"
             color="#841584"
           />
         </View>
@@ -73,4 +58,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Registration;
+export default Session;

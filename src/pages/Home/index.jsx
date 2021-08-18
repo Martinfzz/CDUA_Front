@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
+
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
@@ -10,7 +11,11 @@ const Home = ({ navigation }) => {
         onPress={() => navigation.navigate('Registration')}
         title="S'inscrire"
         color="#841584"
-        accessibilityLabel="Learn more about this purple button"
+      />
+      <Button
+        onPress={() => navigation.navigate('Session')}
+        title="Se connecter"
+        color="red"
       />
       <StatusBar style="auto" />
     </View>
