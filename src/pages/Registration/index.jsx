@@ -10,6 +10,7 @@ import store from "../../store/store";
 const Registration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const isLoginSuccess = useSelector((loginstore) => loginstore.isLogged);
   const isRegistredSuccess = useSelector((signinstore) => signinstore.isRegistred);
   const isLoginFailed = useSelector((loginstore) => !!loginstore.loginError);
@@ -50,6 +51,13 @@ const Registration = () => {
             value={password}
             secureTextEntry={true}
             placeholder="Mot de passe"
+          />
+          <TextInput
+            style={styles.input}
+            onChangeText={setPasswordConfirmation}
+            value={passwordConfirmation}
+            secureTextEntry={true}
+            placeholder="Confirmer le mot de passe"
           />
           <Button
             onPress={handleOnPress}
