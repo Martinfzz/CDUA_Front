@@ -44,7 +44,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loading: true,
-        isRegistered: false,
+        isRegistred: false,
         isUpdateSucceed: false,
         loginError: "",
         logoutError: "",
