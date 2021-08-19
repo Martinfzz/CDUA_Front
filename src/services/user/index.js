@@ -1,6 +1,4 @@
-import Cookies from "js-cookie";
-import { AUTH_TOKEN, USER_ID } from "../../config";
-import store from "../../store/store";
+import { store } from "../../store/configureStore";
 import {
   registrationRequest,
   registrationFailed,
@@ -24,7 +22,7 @@ export default class UserManager {
   static async registerUser(email, password) {
     store.dispatch(registrationRequest());
     try {
-      const response = await API.post("/registration", { user: { email, password } });
+      await API.post("/registration", { user: { email, password } });
       store.dispatch(
         registrationSuccess(),
       );
@@ -38,8 +36,6 @@ export default class UserManager {
     try {
       await API.delete("/session");
       store.dispatch(logoutSuccess());
-      Cookies.remove(AUTH_TOKEN, { secure: true, sameSite: "strict" });
-      Cookies.remove(USER_ID, { secure: true, sameSite: "strict" });
     } catch (error) {
       store.dispatch(logoutFailed(error.message));
     }
@@ -52,8 +48,6 @@ export default class UserManager {
       store.dispatch(
         loginSuccess(response.data.session.id.$oid, response.data.session.jwt),
       );
-      Cookies.set(AUTH_TOKEN, response.headers.authorization, { expires: 7, secure: true, sameSite: "strict" });
-      // Cookies.set(USER_ID, response.data.id, { expires: 7, secure: true, sameSite: "strict" });
     } catch (error) {
       store.dispatch(loginFailed(error.message));
     }
@@ -62,7 +56,7 @@ export default class UserManager {
   static async getUser() {
     store.dispatch(getUserRequest());
     try {
-      const response = await API.get(`/users/${Cookies.get(USER_ID)}`);
+      const response = await API.get(`/users/`);
       store.dispatch(getUserSuccess());
       return response.data;
     } catch (error) {
@@ -74,7 +68,7 @@ export default class UserManager {
   static async updateUser(user) {
     store.dispatch(updateUserRequest());
     try {
-      const response = await API.put(`/users/${Cookies.get(USER_ID)}`, user);
+      const response = await API.put(`/users/`, user);
       store.dispatch(
         updateUserSuccess({
           id: response.data.id,

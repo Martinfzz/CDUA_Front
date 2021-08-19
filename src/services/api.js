@@ -1,7 +1,6 @@
 import axios from "axios";
-import { BASE_URL, AUTH_TOKEN, USER_ID } from "../config";
-import store from "../store/store";
-import Cookies from "js-cookie";
+import { BASE_URL} from "../config";
+import { store } from "../store/configureStore";
 
 const API = axios.create({ baseURL: BASE_URL });
 
@@ -12,7 +11,7 @@ API.interceptors.request.use(async ({ headers, ...config }) => {
     headers: {
       ...headers,
       "Content-Type": "application/json",
-      Authorization: `${headers.Authorization ?? state.jwtToken}`,
+      Authorization: `${headers.Authorization ?? state.user.jwtToken}`,
     },
   };
 });
@@ -21,8 +20,6 @@ API.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response.status === 401) {
-      Cookies.remove(AUTH_TOKEN);
-      Cookies.remove(USER_ID);
       window.location = `/login?redirectUrl=${window.location.pathname}`;
       return Promise.resolve();
     }

@@ -4,33 +4,35 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Provider } from "react-redux";
-import store from "./src/store/store";
+import { PersistGate } from 'redux-persist/integration/react'
+import {store, persistor} from './src/store/configureStore';
 import Home from "./src/pages/Home";
 import Profile from "./src/pages/Profile";
-import Registration from "./src/pages/Registration"
-import Session from "./src/pages/Session"
-
-const Stack = createNativeStackNavigator();
-const Drawer = createDrawerNavigator();
+import Registration from "./src/pages/Registration";
+import Session from "./src/pages/Session";
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
+  const Drawer = createDrawerNavigator();
+
   return (
     <Provider store={store}>
-    <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Accueil">
-        <Drawer.Screen name="Accueil" component={Home} />
-        <Drawer.Screen name="Profil" >
-        {() => (
-        <Stack.Navigator initialRouteName="Profile" screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Profile" component={Profile} />
-          <Stack.Screen name="Inscription" component={Registration} />
-          <Stack.Screen name="Connexion" component={Session} />
-        </Stack.Navigator>
-        )}
-        </Drawer.Screen>
-
-      </Drawer.Navigator>
-    </NavigationContainer>
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer>
+          <Drawer.Navigator initialRouteName="Accueil">
+            <Drawer.Screen name="Accueil" component={Home} />
+            <Drawer.Screen name="Profil" >
+            {() => (
+            <Stack.Navigator initialRouteName="Profile" screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="Profile" component={Profile} />
+              <Stack.Screen name="Inscription" component={Registration} />
+              <Stack.Screen name="Connexion" component={Session} />
+            </Stack.Navigator>
+            )}
+            </Drawer.Screen>
+          </Drawer.Navigator>
+        </NavigationContainer>
+      </PersistGate>
     </Provider>
   );
 }
