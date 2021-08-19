@@ -3,16 +3,16 @@ import { useSelector } from "react-redux";
 import { View, StyleSheet, SafeAreaView, TextInput, Button, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { UserManager } from "../../services";
 import { resetErrors } from "../../store";
-import store from "../../store/store";
+import {store} from "../../store/configureStore";
 import { CommonActions } from '@react-navigation/native';
 
 const Registration = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const isLoginSuccess = useSelector((loginstore) => loginstore.isLogged);
-  const isRegistredSuccess = useSelector((signinstore) => signinstore.isRegistred);
-  const isLoginFailed = useSelector((loginstore) => !!loginstore.loginError);
+  const isLoginSuccess = useSelector((loginstore) => loginstore.user.isLogged);
+  const isRegistredSuccess = useSelector((signinstore) => signinstore.user.isRegistred);
+  const isLoginFailed = useSelector((loginstore) => !!loginstore.user.loginError);
 
   const handleOnPress = (e) => {
     e.preventDefault();

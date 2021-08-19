@@ -1,5 +1,3 @@
-import { AUTH_TOKEN, USER_ID } from "../../config";
-import Cookies from "js-cookie";
 import {
   REGISTRATION_REQUEST,
   REGISTRATION_SUCCESS,
@@ -23,10 +21,10 @@ const INITIAL_STATE = {
   loading: false,
   isLogged: false,
   isRegistred: false,
-  jwtToken: Cookies.get(AUTH_TOKEN),
+  jwtToken: "",
   isUpdateSucceed: false,
   userProfile: {
-    id: Cookies.get(USER_ID), firstName: "",
+    id: "",
   },
   loginError: "",
   logoutError: "",

@@ -6,7 +6,7 @@ const prod = {
 
 const dev = {
   url: {
-    BASE_URL: "http://603f7de14430.ngrok.io",
+    BASE_URL: "http://4a0a820dcc75.ngrok.io",
   },
 };
 

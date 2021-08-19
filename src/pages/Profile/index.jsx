@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Logout from "../../components/Profile/Logout";
 
 const Profile = ({ navigation }) => {
-  const isLogged = useSelector((loginstore) => loginstore.isLogged);
+  const isLogged = useSelector((loginstore) => loginstore.user.isLogged);
 
   return (
   <View>
