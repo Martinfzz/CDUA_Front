@@ -1,6 +1,6 @@
 import UserManager from "./user";
-import StoreManager from "./lesson";
+import LessonManager from "./lesson";
 
 export {
-  UserManager, StoreManager,
+  UserManager, LessonManager,
 };

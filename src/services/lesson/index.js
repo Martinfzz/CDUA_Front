@@ -1,10 +1,10 @@
 import API from "../api";
 
-export default class StoreManager {
+export default class LessonManager {
   static async lessonIndex() {
     try {
-      const response = await API.get("/lesson");
-      return response;
+      const response = await API.get("/lessons");
+      return response.data;
     } catch (error) {
       return error;
     }
@@ -12,7 +12,7 @@ export default class StoreManager {
 
   static async lessonShow(lessonId) {
     try {
-      const response = await API.get(`/lesson/${lessonId}`);
+      const response = await API.get(`/lessons/${lessonId}`);
       return response;
     } catch (error) {
       return error;
@@ -21,7 +21,7 @@ export default class StoreManager {
 
   static async lessonCreate(title, content, userId) {
     try {
-      const response = await API.post("/lesson", { lesson: { title: title, content: content, user_id: userId }});
+      const response = await API.post("/lessons", { lesson: { title: title, content: content, user_id: userId }});
       return response;
     } catch (error) {
       return error;
@@ -30,7 +30,7 @@ export default class StoreManager {
 
   static async lessonUpdate(lessonId, title, content) {
     try {
-      const response = await API.patch(`/lesson/${lessonId}`, { lesson: { title: title, content: content }});
+      const response = await API.patch(`/lessons/${lessonId}`, { lesson: { title: title, content: content }});
       return response;
     } catch (error) {
       return error;
@@ -39,7 +39,7 @@ export default class StoreManager {
 
   static async lessonDelete(lessonId) {
     try {
-      const response = await API.delete(`/lesson/${lessonId}`);
+      const response = await API.delete(`/lessons/${lessonId}`);
       return response;
     } catch (error) {
       return error;
