@@ -1,24 +1,49 @@
-import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
+import React, { useState} from "react";
+import { StyleSheet, View, TextInput, TouchableWithoutFeedback, Button, Keyboard } from "react-native";
 import { LessonManager } from "../../services";
 import { useFocusEffect } from '@react-navigation/native';
 
-const Lesson = ({ route }) => {
-  const [lesson, setLesson] = useState([]);
+const Lesson = ({ navigation, route }) => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const lessonId = route.params.lessonId["$oid"];
+
+  const handleOnPress = () => {
+    LessonManager.lessonUpdate(lessonId, title, content ).then((response) => navigation.navigate('Lessons'))
+    .catch((error) => console.log(error));
+  };
 
   useFocusEffect(
     React.useCallback(() => {
-      LessonManager.lessonShow(route.params.lessonId["$oid"]).then((response) => setLesson((response)))
+      LessonManager.lessonShow(lessonId).then((response) => {setTitle(response.title); setContent(response.content)})
     .catch((error) => console.log(error));
     }, [])
   );
 
   return(
-    <View>
-      <Text>{lesson.title}</Text>
-      <Text>{lesson.content}</Text>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <View style={{flex: 1}}>
+      <TextInput
+        style={styles.input}
+        onChangeText={setTitle}
+        value={title}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={setContent}
+        value={content}
+      />
+      <Button
+        onPress={handleOnPress}
+        title="Mettre à jour"
+        color="#841584"
+      />
     </View>
+  </TouchableWithoutFeedback>
   );
 };
+
+const styles = StyleSheet.create({
+});
 
 export default Lesson;
