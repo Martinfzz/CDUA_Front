@@ -6,7 +6,9 @@ import { useFocusEffect } from '@react-navigation/native';
 const Lesson = ({ navigation, route }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const lessonId = route.params.lessonId["$oid"];
+  const lessonId = route.params.lessonId;
+
+  console.log(lessonId)
 
   const handleOnPress = () => {
     LessonManager.lessonUpdate(lessonId, title, content ).then((response) => navigation.navigate('Lessons'))

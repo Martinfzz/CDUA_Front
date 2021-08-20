@@ -11,7 +11,7 @@ const CreateLesson = ({ navigation }) => {
   const handleOnPress = () => {
     LessonManager.lessonCreate(title, content, userId ).then((response) => navigation.navigate({
       name: 'Lesson',
-      params: { lessonId: response._id },
+      params: { lessonId: response._id["$oid"] },
     }))
     .catch((error) => console.log(error));
   };

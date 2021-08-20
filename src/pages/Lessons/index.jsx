@@ -13,7 +13,7 @@ const Lessons = ({ navigation }) => {
     React.useCallback(() => {
       LessonManager.lessonIndex().then((response) => setLessons(response))
     .catch((error) => console.log(error));
-    }, [])
+    }, [selectedId])
   );
 
   const handleOnPress = (value) => {
@@ -22,11 +22,16 @@ const Lessons = ({ navigation }) => {
       name: 'Lesson',
       params: { lessonId: value },
     });
+  }
+
   
+  const handleOnPressDelete = (value) => {
+    LessonManager.lessonDelete(value).then((response) => setSelectedId(response))
+    .catch((error) => console.log(error));
   }
 
   const renderItem = ({ item }) => (
-    <LessonsList data={item} onPressLesson={handleOnPress} />
+    <LessonsList data={item} onPressLesson={handleOnPress} onPressDelete={handleOnPressDelete} />
   );
 
   return(
