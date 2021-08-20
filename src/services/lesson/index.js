@@ -22,7 +22,7 @@ export default class LessonManager {
   static async lessonCreate(title, content, userId) {
     try {
       const response = await API.post("/lessons", { lesson: { title: title, content: content, user_id: userId }});
-      return response;
+      return response.data;
     } catch (error) {
       return error;
     }
