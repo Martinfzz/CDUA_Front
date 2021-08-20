@@ -13,7 +13,7 @@ export default class LessonManager {
   static async lessonShow(lessonId) {
     try {
       const response = await API.get(`/lessons/${lessonId}`);
-      return response;
+      return response.data;
     } catch (error) {
       return error;
     }

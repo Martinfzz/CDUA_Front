@@ -3,7 +3,7 @@ import { View, Text, FlatList } from "react-native";
 import { LessonManager } from "../../services";
 import LessonsList from "../../components/Lessons/LessonsList";
 
-const Lessons = () => {
+const Lessons = ({ navigation }) => {
   const [lessons, setLessons] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
 
@@ -14,6 +14,11 @@ const Lessons = () => {
 
   const handleOnPress = (value) => {
     setSelectedId(value);
+    navigation.navigate({
+      name: 'Lesson',
+      params: { lessonId: value },
+    });
+  
   }
 
   const renderItem = ({ item }) => (

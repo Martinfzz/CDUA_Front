@@ -11,6 +11,7 @@ import Profile from "./src/pages/Profile";
 import Registration from "./src/pages/Registration";
 import Session from "./src/pages/Session";
 import Lessons from './src/pages/Lessons';
+import Lesson from './src/pages/Lesson';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -31,7 +32,14 @@ export default function App() {
               </Stack.Navigator>
               )}
             </Drawer.Screen>
-            <Drawer.Screen name="Cours" component={Lessons} />
+            <Drawer.Screen name="Cours" >
+            {() => (
+                <Stack.Navigator initialRouteName="Cours" screenOptions={{ headerShown: true }}>
+                <Stack.Screen name="Lessons" component={Lessons} />
+                <Stack.Screen name="Lesson" component={Lesson} />
+              </Stack.Navigator>
+              )}
+              </Drawer.Screen>
           </Drawer.Navigator>
         </NavigationContainer>
       </PersistGate>
