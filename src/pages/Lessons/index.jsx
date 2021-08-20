@@ -1,30 +1,33 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, Item } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { LessonManager } from "../../services";
-
+import LessonsList from "../../components/Lessons/LessonsList";
 
 const Lessons = () => {
   const [lessons, setLessons] = useState([]);
-  const [isFetched, setIsFetched] = useState(false);
-
+  const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
     LessonManager.lessonIndex().then((response) => setLessons(response))
     .catch((error) => console.log(error));
-    setIsFetched(true);
   }, []);
 
+  const handleOnPress = (value) => {
+    setSelectedId(value);
+  }
+
   const renderItem = ({ item }) => (
-    <Text>{item.title}</Text>
+    <LessonsList data={item} onPressLesson={handleOnPress} />
   );
 
   return(
     <View>
-      { isFetched && <FlatList
+      <FlatList
         data={lessons}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
-      />}
+        keyExtractor={item => JSON.stringify(item["_id"])}
+        extraData={selectedId}
+      />
     </View>
   );
 };
