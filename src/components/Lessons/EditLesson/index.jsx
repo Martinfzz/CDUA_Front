@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, TouchableWithoutFeedback, Button, Keyboard } from "react-native";
 import { LessonManager } from "../../../services";
 
-const EditLesson = ({ title, content, editLesson, navigation, lessonId }) => {
+const EditLesson = ({ title, content, editLesson, lessonId }) => {
   const [newTitle, setNewTitle] = useState(title);
   const [newContent, setNewContent] = useState(content);
 
@@ -37,6 +37,5 @@ const EditLesson = ({ title, content, editLesson, navigation, lessonId }) => {
 
 const styles = StyleSheet.create({
 });
-
 
 export default EditLesson;

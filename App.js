@@ -13,6 +13,7 @@ import Session from "./src/pages/Session";
 import Lessons from './src/pages/Lessons';
 import Lesson from './src/pages/Lesson';
 import CreateLesson from './src/pages/Createlesson';
+import DictionnarySearch from './src/pages/Dictionnary/DictionnarySearch';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -43,6 +44,8 @@ export default function App() {
               </Stack.Navigator>
               )}
               </Drawer.Screen>
+              <Drawer.Screen name="Dictionnaire" component={DictionnarySearch} />
+
           </Drawer.Navigator>
         </NavigationContainer>
       </PersistGate>
