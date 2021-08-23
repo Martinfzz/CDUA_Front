@@ -3212,11 +3212,6 @@
   "resolved" "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz"
   "version" "4.0.0"
 
-"escape-string-regexp@2.0.0":
-  "integrity" "sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w=="
-  "resolved" "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz"
-  "version" "2.0.0"
-
 "eslint-config-airbnb-base@^14.2.1":
   "integrity" "sha512-GOrQyDtVEc1Xy20U7vsB2yAoB4nBlfH5HZJeatRXHleO+OS5Ot+MWij4Dpltw4/DyIkqUfqz1epfhVR5XWWQPA=="
   "resolved" "https://registry.npmjs.org/eslint-config-airbnb-base/-/eslint-config-airbnb-base-14.2.1.tgz"
@@ -4274,7 +4269,7 @@
     "has" "^1.0.3"
     "side-channel" "^1.0.4"
 
-"invariant@^2.2.2", "invariant@^2.2.4", "invariant@2.2.4":
+"invariant@^2.2.2", "invariant@^2.2.4":
   "integrity" "sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA=="
   "resolved" "https://registry.npmjs.org/invariant/-/invariant-2.2.4.tgz"
   "version" "2.2.4"
@@ -4631,11 +4626,6 @@
   "integrity" "sha512-3Zi16h6L5tXDRQJTb221cnRoVG9/9OvreLdLU2/ZjRv/GILL+2Cemt0IKvkowwkDpvouAU1DQPOJ7qaiHeIdrw=="
   "resolved" "https://registry.npmjs.org/jetifier/-/jetifier-1.6.8.tgz"
   "version" "1.6.8"
-
-"js-cookie@^3.0.0":
-  "integrity" "sha512-oUbbplKuH07/XX2YD2+Q+GMiPpnVXaRz8npE7suhBH9QEkJe2W7mQ6rwuMXHue3fpfcftQwzgyvGzIHyfCSngQ=="
-  "resolved" "https://registry.npmjs.org/js-cookie/-/js-cookie-3.0.0.tgz"
-  "version" "3.0.0"
 
 "js-tokens@^3.0.0 || ^4.0.0", "js-tokens@^4.0.0":
   "integrity" "sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ=="
@@ -6173,15 +6163,7 @@
     "normalize-css-color" "^1.0.2"
     "prop-types" "^15.6.0"
 
-"react-native-webview@^11.13.0":
-  "integrity" "sha512-jjQAKWv8JzRmcn76fMe4lXD84AAeR7kn43kAmUe1GX312BMLaP+RbKlgpYAlNuOBXL0YirItGKDrpaD0bNROOA=="
-  "resolved" "https://registry.npmjs.org/react-native-webview/-/react-native-webview-11.13.0.tgz"
-  "version" "11.13.0"
-  dependencies:
-    "escape-string-regexp" "2.0.0"
-    "invariant" "2.2.4"
-
-"react-native@*", "react-native@^*", "react-native@^0.60.6 || ^0.61.5 || ^0.62.2 || ^0.63.2 || ^0.64.0 || 1000.0.0", "react-native@>=0.50.4", "react-native@>=0.60", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz":
+"react-native@*", "react-native@^*", "react-native@^0.60.6 || ^0.61.5 || ^0.62.2 || ^0.63.2 || ^0.64.0 || 1000.0.0", "react-native@>=0.50.4", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz":
   "integrity" "sha512-qWR6pcG4yDu/Rthm+DvAS017rL38LbZFnJv/k4HL4ZUH/WhKuqC+stD7TlpaOBb3N2bkydm9s+GCa14T41MLEg=="
   "resolved" "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz"
   "version" "0.63.2"
@@ -6274,11 +6256,6 @@
   "integrity" "sha512-sSJAzNq7zka3qVHKce1hbvqf0Vf5DuTVm7dr4GtsqQVOexnrvbV47RWFiPxQ8fscnyiuWyD2O92DOxPl0tGCRg=="
   "resolved" "https://registry.npmjs.org/redux-persist/-/redux-persist-5.10.0.tgz"
   "version" "5.10.0"
-
-"redux-thunk@^2.3.0":
-  "integrity" "sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw=="
-  "resolved" "https://registry.npmjs.org/redux-thunk/-/redux-thunk-2.3.0.tgz"
-  "version" "2.3.0"
 
 "redux@^4.0.0", "redux@^4.1.1", "redux@>3.0.0":
   "integrity" "sha512-hZQZdDEM25UY2P493kPYuKqviVwZ58lEmGQNeQ+gXa+U0gYPUBf7NKYazbe3m+bs/DzM/ahN12DbF+NG8i0CWw=="
