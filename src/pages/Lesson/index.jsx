@@ -1,19 +1,15 @@
 import React, { useState} from "react";
-import { StyleSheet, View, TextInput, TouchableWithoutFeedback, Button, Keyboard } from "react-native";
+import { StyleSheet, View, Text, TouchableWithoutFeedback, Button, Keyboard } from "react-native";
 import { LessonManager } from "../../services";
 import { useFocusEffect } from '@react-navigation/native';
+import Markdown from 'react-native-markdown-display';
+import EditLesson from "../../components/Lessons/EditLesson";
 
-const Lesson = ({ navigation, route }) => {
+const Lesson = ({ route }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [edit, setEdit] = useState(false);
   const lessonId = route.params.lessonId;
-
-  console.log(lessonId)
-
-  const handleOnPress = () => {
-    LessonManager.lessonUpdate(lessonId, title, content ).then((response) => navigation.navigate('Lessons'))
-    .catch((error) => console.log(error));
-  };
 
   useFocusEffect(
     React.useCallback(() => {
@@ -22,24 +18,26 @@ const Lesson = ({ navigation, route }) => {
     }, [])
   );
 
+  const handleOnPressEdit = () => {
+    setEdit(true);
+  }
+
+  const handleEditLesson = (newTitle, newContent) => {
+    setTitle(newTitle);
+    setContent(newContent);
+    setEdit(false);
+  }
+
   return(
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <View style={{flex: 1}}>
-      <TextInput
-        style={styles.input}
-        onChangeText={setTitle}
-        value={title}
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={setContent}
-        value={content}
-      />
-      <Button
-        onPress={handleOnPress}
-        title="Mettre à jour"
-        color="#841584"
-      />
+      { !edit && <View>
+        <Text onPress={handleOnPressEdit}>{title}</Text>
+        <Text onPress={handleOnPressEdit}>
+          <Markdown>{content}</Markdown>
+        </Text>
+        </View> }
+      { edit && <EditLesson title={title} content={content} editLesson={handleEditLesson} lessonId={lessonId} /> }
     </View>
   </TouchableWithoutFeedback>
   );

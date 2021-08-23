@@ -24,7 +24,6 @@ const Lessons = ({ navigation }) => {
     });
   }
 
-  
   const handleOnPressDelete = (value) => {
     LessonManager.lessonDelete(value).then((response) => setSelectedId(response))
     .catch((error) => console.log(error));
