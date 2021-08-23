@@ -10,6 +10,9 @@ import Home from "./src/pages/Home";
 import Profile from "./src/pages/Profile";
 import Registration from "./src/pages/Registration";
 import Session from "./src/pages/Session";
+import Lessons from './src/pages/Lessons';
+import Lesson from './src/pages/Lesson';
+import CreateLesson from './src/pages/Createlesson';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -22,14 +25,24 @@ export default function App() {
           <Drawer.Navigator initialRouteName="Accueil">
             <Drawer.Screen name="Accueil" component={Home} />
             <Drawer.Screen name="Profil" >
-            {() => (
-            <Stack.Navigator initialRouteName="Profile" screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="Profile" component={Profile} />
-              <Stack.Screen name="Inscription" component={Registration} />
-              <Stack.Screen name="Connexion" component={Session} />
-            </Stack.Navigator>
-            )}
+              {() => (
+                <Stack.Navigator initialRouteName="Profile" screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="Profile" component={Profile} />
+                <Stack.Screen name="Inscription" component={Registration} />
+                <Stack.Screen name="Connexion" component={Session} />
+              </Stack.Navigator>
+              )}
             </Drawer.Screen>
+            <Drawer.Screen name="Cours" >
+            {() => (
+                <Stack.Navigator initialRouteName="Cours" screenOptions={{ headerShown: true }}>
+                <Stack.Screen name="Lessons" component={Lessons} />
+                <Stack.Screen name="Lesson" component={Lesson} />
+                <Stack.Screen name="CreateLesson" component={CreateLesson} />
+
+              </Stack.Navigator>
+              )}
+              </Drawer.Screen>
           </Drawer.Navigator>
         </NavigationContainer>
       </PersistGate>
