@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, SectionList } from 'react-native';
+import { StyleSheet, View, Text, SectionList, useWindowDimensions } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { DictionnaryManager } from '../../../services';
+import RenderHtml from 'react-native-render-html';
 
 const DictionnarySearch = () => {
   const [result, setResult] = useState([])
   const [data, setData] = useState([])
   const [isFetched, setIsFetched] = useState(false)
+  const { width } = useWindowDimensions();
   
   useEffect(() => {
     DictionnaryManager.dictionnarySearch("monat").then((response) => 
@@ -18,29 +20,28 @@ const DictionnarySearch = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  const Item = ({ content }) =>{ 
-    return(
-      <View><Text>dslfi</Text></View>
-  );}
+  const Item = ({ content }) => (
+    <RenderHtml
+      contentWidth={width}
+      source={{ html: content.toString() }}
+    />
+  );
 
   return(
     <View style={styles.container}>
-      <WebView
-      originWhitelist={['*']}
-      source={{ html: '<h1>dsfgpjkfd</h1>' }}
-  />
-      
       { isFetched && <View style={styles.container}>
       <SectionList
         sections={data}
         keyExtractor={(item, index) => item + index}
         renderItem={({ item }) => <Item content={item} />}
         renderSectionHeader={({ section: { title } }) => (
-          <Text style={styles.header}>{title}</Text>
+          <RenderHtml
+            contentWidth={width}
+            source={{ html: title.toString() }}
+          />
         )}
       />
       </View> }
-
     </View>
   );
 };
