@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, SectionList, useWindowDimensions } from 'react-native';
-import { WebView } from 'react-native-webview';
 import { DictionnaryManager } from '../../../services';
 import RenderHtml from 'react-native-render-html';
 
@@ -23,7 +22,7 @@ const DictionnarySearch = () => {
   const Item = ({ content }) => (
     <RenderHtml
       contentWidth={width}
-      source={{ html: content.toString() }}
+      source={{ html: content.toString().replace( /(<([^>]+)>)/ig, '') }}
     />
   );
 
@@ -33,7 +32,11 @@ const DictionnarySearch = () => {
       <SectionList
         sections={data}
         keyExtractor={(item, index) => item + index}
-        renderItem={({ item }) => <Item content={item} />}
+        renderItem={({ item }) => 
+          <View>
+            <Item content={item[0]} />
+            <Item content={item[1]} />
+          </View>}
         renderSectionHeader={({ section: { title } }) => (
           <RenderHtml
             contentWidth={width}
