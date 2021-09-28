@@ -1,6 +1,7 @@
 import axios from "axios";
 import { BASE_URL} from "../config";
 import { store } from "../store/configureStore";
+import { PONS_SECRET } from "@env";
 
 const API = axios.create({ baseURL: BASE_URL });
 
@@ -12,6 +13,7 @@ API.interceptors.request.use(async ({ headers, ...config }) => {
       ...headers,
       "Content-Type": "application/json",
       Authorization: `${headers.Authorization ?? state.user.jwtToken}`,
+      "X-Secret": `${PONS_SECRET}`,
     },
   };
 });
