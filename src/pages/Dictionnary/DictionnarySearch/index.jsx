@@ -19,10 +19,11 @@ const DictionnarySearch = () => {
       .catch((error) => console.log(error));
   }, []);
 
+
   const Item = ({ content }) => (
     <RenderHtml
       contentWidth={width}
-      source={{ html: content.toString().replace( /(<([^>]+)>)/ig, '') }}
+      source={{ html: content[0].toString() }}
     />
   );
 
