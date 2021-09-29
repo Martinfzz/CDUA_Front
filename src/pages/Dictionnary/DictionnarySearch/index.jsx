@@ -4,15 +4,13 @@ import { DictionnaryManager } from '../../../services';
 import RenderHtml from 'react-native-render-html';
 
 const DictionnarySearch = () => {
-  const [result, setResult] = useState([])
   const [data, setData] = useState([])
   const [isFetched, setIsFetched] = useState(false)
   const { width } = useWindowDimensions();
   
   useEffect(() => {
-    DictionnaryManager.dictionnarySearch("monat").then((response) => 
+    DictionnaryManager.dictionnaryShow("monat").then((response) => 
     {
-      setResult(response),
       setIsFetched(true),
       setData(response[0].hits[0].roms[0].arabs.map(( element ) => ({title: element.header, data: element.translations.map(( element ) => [[element.source], [element.target]])})))
     })

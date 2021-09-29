@@ -1,16 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { useSelector } from "react-redux";
+import SearchBarInput from "../../components/Dictionnary/SearchBarInput";
 
 const Home = () => {
   const isLoginSuccess = useSelector((loginstore) => loginstore);
 
   return (
-    <View style={styles.container}>
-      <Text>La page home</Text>
-      <StatusBar style="auto" />
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={{flex: 1}}>
+        <SearchBarInput />
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 

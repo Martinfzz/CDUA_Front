@@ -1,12 +1,9 @@
 import API from "../api";
 
 export default class DictionnaryManager {
-  static async dictionnarySearch(word) {
-    console.log("dslihjdlfsijfdslj")
+  static async dictionnaryShow(wordId) {
     try {
-      const response = await API.get(`/dictionnary/${word.toLowerCase()}`);
-      console.log("success")
-
+      const response = await API.get(`/dictionnaries/${wordId}`);
       return response.data;
     } catch (error) {
       try {
@@ -17,6 +14,14 @@ export default class DictionnaryManager {
         return error;
       }
     }
-    
+  }
+
+  static async dictionnarySearch(word) {
+    try {
+      const response = await API.get(`/dictionnary/${word.toLowerCase()}`);
+      return response.data;
+    } catch (error) {
+        return error;
+    }
   }
 }
