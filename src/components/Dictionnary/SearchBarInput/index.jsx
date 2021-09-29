@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, SectionList, TextInput } from 'react-native';
+import { StyleSheet, View, Text, SectionList, TextInput, Button } from 'react-native';
 import { DictionnaryManager } from '../../../services';
 import { SearchBar } from 'react-native-elements';
 import SearchDropdown from '../SearchDropdown';
@@ -29,8 +29,10 @@ const SearchBarInput = () => {
         placeholder="Rechercher"
         onChangeText={updateSearch}
         value={searchInput}
+        searchIcon={false}
+        onSubmitEditing={()=>console.log(`User typed ------------------`)}
     />
-    { isFetched && <SearchDropdown data={data}></SearchDropdown>}
+    { (isFetched && data.length > 0) && <SearchDropdown data={data}></SearchDropdown>}
     </View>
   );
 };

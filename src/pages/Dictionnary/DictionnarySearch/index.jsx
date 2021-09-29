@@ -3,13 +3,14 @@ import { StyleSheet, View, Text, SectionList, useWindowDimensions } from 'react-
 import { DictionnaryManager } from '../../../services';
 import RenderHtml from 'react-native-render-html';
 
-const DictionnarySearch = () => {
+const DictionnarySearch = ({ route }) => {
   const [data, setData] = useState([])
   const [isFetched, setIsFetched] = useState(false)
   const { width } = useWindowDimensions();
+  const searchId = route.params.searchId;
   
   useEffect(() => {
-    DictionnaryManager.dictionnaryShow("monat").then((response) => 
+    DictionnaryManager.dictionnaryShow(searchId).then((response) => 
     {
       setIsFetched(true),
       setData(response[0].hits[0].roms[0].arabs.map(( element ) => ({title: element.header, data: element.translations.map(( element ) => [[element.source], [element.target]])})))
@@ -17,6 +18,7 @@ const DictionnarySearch = () => {
       .catch((error) => console.log(error));
   }, []);
 
+  console.log(data)
 
   const Item = ({ content }) => (
     <RenderHtml

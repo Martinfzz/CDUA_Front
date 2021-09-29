@@ -44,7 +44,7 @@ export default function App() {
               </Stack.Navigator>
               )}
               </Drawer.Screen>
-              <Drawer.Screen name="Dictionnaire" component={DictionnarySearch} />
+              <Drawer.Screen name="Dictionnaire" component={DictionnarySearch} options={{ id: '' }} />
 
           </Drawer.Navigator>
         </NavigationContainer>
