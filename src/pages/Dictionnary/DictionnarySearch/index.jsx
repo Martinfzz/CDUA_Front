@@ -8,6 +8,8 @@ const DictionnarySearch = ({ route }) => {
   const [isFetched, setIsFetched] = useState(false)
   const { width } = useWindowDimensions();
   const searchId = route.params.searchId;
+
+  console.log(searchId)
   
   useEffect(() => {
     DictionnaryManager.dictionnaryShow(searchId).then((response) => 
@@ -16,9 +18,7 @@ const DictionnarySearch = ({ route }) => {
       setData(response[0].hits[0].roms[0].arabs.map(( element ) => ({title: element.header, data: element.translations.map(( element ) => [[element.source], [element.target]])})))
     })
       .catch((error) => console.log(error));
-  }, []);
-
-  console.log(data)
+  }, [searchId]);
 
   const Item = ({ content }) => (
     <RenderHtml

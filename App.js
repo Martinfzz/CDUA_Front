@@ -15,7 +15,7 @@ import Lesson from './src/pages/Lesson';
 import CreateLesson from './src/pages/Createlesson';
 import DictionnarySearch from './src/pages/Dictionnary/DictionnarySearch';
 
-export default function App() {
+export default function App({ route }) {
   const Stack = createNativeStackNavigator();
   const Drawer = createDrawerNavigator();
 
@@ -44,7 +44,7 @@ export default function App() {
               </Stack.Navigator>
               )}
               </Drawer.Screen>
-              <Drawer.Screen name="Dictionnaire" component={DictionnarySearch} options={{ id: '' }} />
+              <Drawer.Screen name="Dictionnaire" component={DictionnarySearch} initialParams={{ searchId: "" }} />
 
           </Drawer.Navigator>
         </NavigationContainer>
